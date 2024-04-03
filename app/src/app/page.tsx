@@ -10,6 +10,23 @@ import { cn } from "@/lib/utils";
 import Features from "./features";
 import { XIcon } from "lucide-react";
 import FlowModal from "./flow-modal";
+import { fetchMetadata } from "frames.js/next";
+
+// Declare the frame
+export async function generateMetadata() {
+  return {
+    title: "Farcaster Reputation Enginne",
+    // provide a full URL to your /frames endpoint
+    other: await fetchMetadata(
+      new URL(
+        "/api/frames",
+        process.env.NEXT_PUBLIC_HOST
+          ? `${process.env.NEXT_PUBLIC_HOST}`
+          : "http://localhost:3000"
+      )
+    ),
+  };
+}
 
 export default function Home() {
   const performAPICall = async () => {
