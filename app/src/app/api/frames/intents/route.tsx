@@ -1,5 +1,6 @@
 // ./app/frames/route.tsx
 /* eslint-disable react/jsx-key */
+import { requestIntent } from "@/utils/rollup";
 import { getAddressForFid, getUserDataForFid } from "frames.js";
 import { createFrames, Button } from "frames.js/next";
 
@@ -7,22 +8,26 @@ const frames = createFrames();
 
 const handleRequest = frames(async (ctx) => {
   console.log(ctx.message);
-  if (ctx.message) {
+  if (ctx.message && ctx.message.inputText) {
     // Get the users fid
     const userFid: number = ctx?.message.requesterFid;
     const _input = ctx.message.inputText;
 
-    const userAddress = getAddressForFid({ fid: userFid });
+    const userAddress = await getAddressForFid({ fid: userFid });
 
     // Otherwise
     // request the User data for score calculate
     // don't wait for that
+    const data = await requestIntent({
+      userAddress: userAddress as string,
+      intent: _input as string,
+    });
 
     // Send a refresh Frame first
     // send a POST request for generating the intent
     // handleIntent
-
-    const reqId = 0;
+    const reqId = data?.requestId ? data.requestId : 0;
+    // const reqId = 0;
 
     return {
       image: (
