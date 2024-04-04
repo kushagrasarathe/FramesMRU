@@ -38,20 +38,18 @@ const approvalFunctionName = [
 ];
 
 const UNISWAP_V3ROUTER_ADDRESS = "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45";
-const AAVE_LENDING_POOL_ADDRESS = "0xcC6114B983E4Ed2737E9BD3961c9924e6216c704";
+const AAVE_LENDING_POOL_ADDRESS = "0x794a61358D6845594F94dc1DB02A252b5b4814aD";
 
 const tokenAddresses: { [token: string]: string } = {
-  "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE": "MATIC",
-  "0x0fa8781a83e46826621b3bc094ea2a0212e71b23": "USDC",
-  "0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889": "WMATIC",
-  "0xA6FA4fB5f76172d178d61B04b0ecd319C5d1C0aa": "WETH",
-  "0x1fdE0eCc619726f4cD597887C9F3b4c8740e19e2": "USDT",
+  "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE": "ETH",
+  "0xaf88d065e77c8cC2239327C5EDb3A432268e5831": "USDC",
+  "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1": "WETH",
+  "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9": "USDT",
 };
 
 const tokenDecimals: { [token: string]: number } = {
   matic: 18,
   usdc: 6,
-  wmatic: 18,
   weth: 18,
   usdt: 6,
 };

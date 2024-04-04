@@ -8,7 +8,7 @@ const handleRequest = frames(async (ctx) => {
   return {
     image: `${process.env.HOST}/introductory.png`,
     buttons: [
-      <Button action="post" target={`${process.env.HOST}/api/intents`}>
+      <Button action="post" target={`${process.env.HOST}/api/frames/intents`}>
         Submit
       </Button>,
     ],

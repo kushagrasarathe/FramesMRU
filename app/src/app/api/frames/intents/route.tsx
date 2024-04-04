@@ -15,6 +15,8 @@ const handleRequest = frames(async (ctx) => {
 
     const userAddress = await getAddressForFid({ fid: userFid });
 
+    console.log(_input);
+
     // Otherwise
     // request the User data for score calculate
     // don't wait for that
@@ -52,12 +54,11 @@ const handleRequest = frames(async (ctx) => {
             }}
             tw="flex  rounded-xl bg-gradient-to-b from-purple-400/40 via-violet-500/40 to-indigo-600/40"
           >
-            <img
+            {/* <img
               tw=" h-full rounded-l-xl "
-              src="https://devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2F6e69b8b92a344c8cbd6d9dd6f57f03bf%2Fprojects%2F24b75b1a558e4636a2d1166465435cb6%2F018d44bd-c12e-467d-9d3f-d625c7da8e7a.jpeg&w=1440&q=75"
+              src="https://i.ibb.co/kSDwzFV/Apr-01-Whats-App-Image.jpg"
               alt="logo"
-            />
-
+            /> */}
             <div tw="flex flex-col items-start justify-center pl-5">
               <div
                 tw="flex text-black max-w-md px-2"
@@ -76,7 +77,7 @@ const handleRequest = frames(async (ctx) => {
                   letterSpacing: 0.3,
                 }}
               >
-                I want to swap 10 USDC to WMATIC
+                {_input}
               </div>
 
               <div
@@ -86,7 +87,7 @@ const handleRequest = frames(async (ctx) => {
                   fontWeight: "500",
                 }}
               >
-                Processing your intent...
+                Processing your intent... with {reqId}
               </div>
             </div>
           </div>
@@ -126,11 +127,11 @@ const handleRequest = frames(async (ctx) => {
             }}
             tw="flex  rounded-xl bg-gradient-to-b from-purple-400/40 via-violet-500/40 to-indigo-600/40"
           >
-            <img
+            {/* <img
               tw=" h-full rounded-l-xl "
-              src="https://devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2F6e69b8b92a344c8cbd6d9dd6f57f03bf%2Fprojects%2F24b75b1a558e4636a2d1166465435cb6%2F018d44bd-c12e-467d-9d3f-d625c7da8e7a.jpeg&w=1440&q=75"
+              src="https://i.ibb.co/kSDwzFV/Apr-01-Whats-App-Image.jpg"
               alt="logo"
-            />
+            /> */}
 
             <div tw="flex flex-col items-start justify-center pl-5">
               <div

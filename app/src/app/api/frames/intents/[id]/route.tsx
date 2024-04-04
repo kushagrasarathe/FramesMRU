@@ -4,28 +4,25 @@ import { IntentType, getIntentData } from "@/utils/rollup";
 import { formatUnits, parseUnits } from "ethers";
 import { getUserDataForFid } from "frames.js";
 import { createFrames, Button } from "frames.js/next";
-
+// import logo from "@/assets/logo.jpeg";
 const frames = createFrames();
 
 const UNISWAP_V3ROUTER_ADDRESS = "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45";
-const AAVE_LENDING_POOL_ADDRESS = "0xcC6114B983E4Ed2737E9BD3961c9924e6216c704";
+const AAVE_LENDING_POOL_ADDRESS = "0x794a61358D6845594F94dc1DB02A252b5b4814aD";
 
 const tokenAddresses: { [token: string]: string } = {
-  "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE": "MATIC",
-  "0x0fa8781a83e46826621b3bc094ea2a0212e71b23": "USDC",
-  "0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889": "WMATIC",
-  "0xA6FA4fB5f76172d178d61B04b0ecd319C5d1C0aa": "WETH",
-  "0x1fdE0eCc619726f4cD597887C9F3b4c8740e19e2": "USDT",
+  "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE": "ETH",
+  "0xaf88d065e77c8cC2239327C5EDb3A432268e5831": "USDC",
+  "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1": "WETH",
+  "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9": "USDT",
 };
 
 const tokenDecimals: { [token: string]: number } = {
   matic: 18,
   usdc: 6,
-  wmatic: 18,
   weth: 18,
   usdt: 6,
 };
-
 const getTokenName = (tokens: string[]) => {
   const addresses: string[] = [];
   for (const token of tokens) {
@@ -99,6 +96,8 @@ const handleRequest = frames(async (ctx) => {
 
   // get the Request status
   const intentData = await getIntentData(Number(intentReqId));
+
+  console.log(intentData);
 
   if (ctx.message?.transactionId) {
     return {
@@ -212,11 +211,11 @@ const handleRequest = frames(async (ctx) => {
             }}
             tw="flex  rounded-xl bg-gradient-to-b from-purple-400/40 via-violet-500/40 to-indigo-600/40"
           >
-            <img
+            {/* <img
               tw=" h-full rounded-l-xl "
-              src="https://devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2F6e69b8b92a344c8cbd6d9dd6f57f03bf%2Fprojects%2F24b75b1a558e4636a2d1166465435cb6%2F018d44bd-c12e-467d-9d3f-d625c7da8e7a.jpeg&w=1440&q=75"
+              src="https://i.ibb.co/q0N0k9f/Whats-App-Image-Apr-01.jpg"
               alt="logo"
-            />
+            /> */}
 
             <div tw="flex flex-col items-start justify-center pl-5">
               <div
@@ -267,8 +266,10 @@ const handleRequest = frames(async (ctx) => {
                 <div tw="flex w-full items-center justify-normal mt-3">
                   <div tw="w-16">Tokens:</div>
                   <div tw="flex ml-6">
-                    {parsedIntentData.tokenName.map((token) => (
-                      <>{token}</>
+                    {parsedIntentData.tokenName.map((token, idx) => (
+                      <div key={idx} tw="ml-2">
+                        {token}
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -295,8 +296,8 @@ const handleRequest = frames(async (ctx) => {
       buttons: [
         <Button
           action="tx"
-          target={`${process.env.HOST}/api/frame/intents/tx/${intentReqId}`}
-          post_url={`${process.env.HOST}/api/frame/intents/${intentReqId}`}
+          target={`${process.env.HOST}/api/frames/intents/tx/${intentReqId}`}
+          post_url={`${process.env.HOST}/api/frames/intents/${intentReqId}`}
         >
           Complete Tx
         </Button>,
@@ -327,11 +328,11 @@ const handleRequest = frames(async (ctx) => {
             }}
             tw="flex  rounded-xl bg-gradient-to-b from-purple-400/40 via-violet-500/40 to-indigo-600/40"
           >
-            <img
+            {/* <img
               tw=" h-full rounded-l-xl "
-              src="https://devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2F6e69b8b92a344c8cbd6d9dd6f57f03bf%2Fprojects%2F24b75b1a558e4636a2d1166465435cb6%2F018d44bd-c12e-467d-9d3f-d625c7da8e7a.jpeg&w=1440&q=75"
+              src="https://i.ibb.co/q0N0k9f/Whats-App-Image-Apr-01.jpg"
               alt="logo"
-            />
+            /> */}
 
             <div tw="flex flex-col items-start justify-center pl-5">
               <div

@@ -12,7 +12,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Abi, parseAbi } from "viem";
 
 const UNISWAP_V3ROUTER_ADDRESS = "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45";
-const AAVE_LENDING_POOL_ADDRESS = "0xcC6114B983E4Ed2737E9BD3961c9924e6216c704";
+const AAVE_LENDING_POOL_ADDRESS = "0x794a61358D6845594F94dc1DB02A252b5b4814aD";
 
 const getProtocolName = (protocolAddress: string) => {
   if (protocolAddress == UNISWAP_V3ROUTER_ADDRESS) {
@@ -30,17 +30,17 @@ export const POST = async (
   const json = await req.json();
   const url = req.url;
   const path = url.split("/");
-  const intentReqId = path[path.length - 1];
-  console.log(intentReqId);
+  const intentReqId = path[path.length - 1].split("?")[0];
+  // console.log(intentReqId);
 
   // get the Request status
   const intentData = await getIntentData(Number(intentReqId));
+  // console.log(intentData);
+  // const frameMessage = await getFrameMessage(json);
 
-  const frameMessage = await getFrameMessage(json);
-
-  if (!frameMessage) {
-    throw new Error("No frame message");
-  }
+  // if (!frameMessage) {
+  //   throw new Error("No frame message");
+  // }
 
   if (intentData && intentData.functionName != "") {
     const protocolName = getProtocolName(intentData.protocolAddress.toString());
@@ -50,16 +50,27 @@ export const POST = async (
       protocolName == "UNISWAP" ? UNISWAP_ROUTER_ABI : AAVE_ABI;
 
     const txData = JSON.parse(intentData.solvedTxData);
-    console.log(txData);
+    // console.log(txData);
 
-    return NextResponse.json({
-      chainId: "eip155:10", // OP Mainnet 10
+    console.log({
+      chainId: "eip155:42161", // OP Mainnet 10
       method: "eth_sendTransaction",
       params: {
         abi: contractABI,
         to: txData.to,
         data: txData.data,
         value: txData.value,
+      },
+    });
+
+    return NextResponse.json({
+      chainId: "eip155:42161", // OP Mainnet 10
+      method: "eth_sendTransaction",
+      params: {
+        abi: contractABI,
+        to: txData.to,
+        data: txData.data,
+        value: `${txData.value}`,
       },
     });
   }
