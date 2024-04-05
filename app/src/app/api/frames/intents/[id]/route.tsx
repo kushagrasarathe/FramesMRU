@@ -299,7 +299,13 @@ const handleRequest = frames(async (ctx) => {
           target={`${process.env.HOST}/api/frames/intents/tx/${intentReqId}`}
           post_url={`${process.env.HOST}/api/frames/intents/${intentReqId}`}
         >
-          Complete Tx
+          Submit Tx
+        </Button>,
+        <Button
+          action="link"
+          target={`${process.env.HOST}/intents/tx/${intentReqId}`}
+        >
+          Complete Tx on Website
         </Button>,
       ],
       // state: { count: (ctx.message?.state?.count ?? 0) + 1 },
