@@ -4,6 +4,7 @@ import { IntentType, getIntentData } from "@/utils/rollup";
 import { formatUnits, parseUnits } from "ethers";
 import { getUserDataForFid } from "frames.js";
 import { createFrames, Button } from "frames.js/next";
+import { LogoSVG } from "../../image";
 // import logo from "@/assets/logo.jpeg";
 const frames = createFrames();
 
@@ -123,11 +124,12 @@ const handleRequest = frames(async (ctx) => {
             }}
             tw="flex  rounded-xl bg-gradient-to-b from-purple-400/40 via-violet-500/40 to-indigo-600/40"
           >
-            <img
+            {/* <img
               tw=" h-full rounded-l-xl "
               src="https://devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2F6e69b8b92a344c8cbd6d9dd6f57f03bf%2Fprojects%2F24b75b1a558e4636a2d1166465435cb6%2F018d44bd-c12e-467d-9d3f-d625c7da8e7a.jpeg&w=1440&q=75"
               alt="logo"
-            />
+            /> */}
+            <LogoSVG />
 
             <div tw="flex flex-col items-start justify-center pl-5">
               <div
@@ -216,6 +218,7 @@ const handleRequest = frames(async (ctx) => {
               src="https://i.ibb.co/q0N0k9f/Whats-App-Image-Apr-01.jpg"
               alt="logo"
             /> */}
+            <LogoSVG />
 
             <div tw="flex flex-col items-start justify-center pl-5">
               <div
@@ -339,6 +342,7 @@ const handleRequest = frames(async (ctx) => {
               src="https://i.ibb.co/q0N0k9f/Whats-App-Image-Apr-01.jpg"
               alt="logo"
             /> */}
+            <LogoSVG />
 
             <div tw="flex flex-col items-start justify-center pl-5">
               <div

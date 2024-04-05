@@ -3,6 +3,7 @@
 import { requestIntent } from "@/utils/rollup";
 import { getAddressForFid, getUserDataForFid } from "frames.js";
 import { createFrames, Button } from "frames.js/next";
+import { LogoSVG } from "../image";
 
 const frames = createFrames();
 
@@ -59,6 +60,7 @@ const handleRequest = frames(async (ctx) => {
               src="https://i.ibb.co/kSDwzFV/Apr-01-Whats-App-Image.jpg"
               alt="logo"
             /> */}
+            <LogoSVG />
             <div tw="flex flex-col items-start justify-center pl-5">
               <div
                 tw="flex text-black max-w-md px-2"
@@ -132,7 +134,7 @@ const handleRequest = frames(async (ctx) => {
               src="https://i.ibb.co/kSDwzFV/Apr-01-Whats-App-Image.jpg"
               alt="logo"
             /> */}
-
+            <LogoSVG />
             <div tw="flex flex-col items-start justify-center pl-5">
               <div
                 tw="flex text-black max-w-md px-2"
